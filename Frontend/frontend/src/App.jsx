@@ -5,6 +5,8 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from './components/Home';
 import Movies from './components/Movies';
 
+// In this App component I am using react-router-dom for routing on multiple pages. 
+
 function App() {
 
   return (

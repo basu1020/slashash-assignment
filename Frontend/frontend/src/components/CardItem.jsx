@@ -1,19 +1,26 @@
 import React, {useState} from 'react';
 
+// this is a simple card item for showing movies after fetching it from the API, it has a function which adds favorite movie into the database named 'toggleFavorite'
+
 const CardItem = ({ movie }) => {
     const [isFavorite, setIsFavorite] = useState(false);
 
     const toggleFavorite = async () => {
+
         setIsFavorite(!isFavorite);
-        const response = await fetch('localhost:5000/add-movies', {
+
+        // making 'POST' request to the backend to add new movie. 
+        const response = await fetch('http://localhost:5000/add-movies', {
             method: 'POST', 
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({title: movie.Title, year: movie.Year, type: movie.Type, poster: movie.Poster })
+            body: JSON.stringify({Title: movie.Title, year: movie.Year, type: movie.Type, Poster: movie.Poster })
         })
 
-        const json = response.json()
+        const json = await response.json()
+
+        // showing messages accroding to the success bool received from the backend. 
         if(json.success) {
             alert("movie added successfully")
         }
@@ -23,6 +30,7 @@ const CardItem = ({ movie }) => {
     };
 
     return (
+        // displaying details about the movies. 
         <div className="card" style={{ width: '18rem' }}>
             <img src={movie.Poster} className="card-img-top" alt={movie.Title} />
             <div className="card-body">

@@ -1,7 +1,9 @@
 const express = require('express')
+const cors = require('cors')
 const app = express()
 const port = 5000
-const {addMovie, movieValidator, deleteMovie} = require('./controllers/movieController')
+
+const {addMovie, movieValidator, deleteMovie, fetchMovies} = require('./controllers/movieController')
 // importing the sequelize instance
 const sequelize = require('./models/index')
 
@@ -11,9 +13,9 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
 // Routes for adding, deleting, and fetching movies
-app.post('/add-movies', addMovieController);
-app.delete('/movies/:id', deleteMovieController);
-app.get('/movies', fetchMoviesController);
+app.post('/add-movies', movieValidator, addMovie);
+app.delete('/movies/:id', deleteMovie);
+app.get('/movies', fetchMovies);
 
 // connecting and syncing with the database. 
 sequelize.sync()

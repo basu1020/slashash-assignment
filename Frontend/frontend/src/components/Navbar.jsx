@@ -1,6 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
+// this is a simple navbar to naivage form Home and Movies seciton,
+
 const Navbar = () => {
     return (
         <>
@@ -12,6 +14,7 @@ const Navbar = () => {
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav">
+                            {/* Using 'Links to' for navigating between different routes from react-router-dom*/}
                             <li class="nav-item">
                                 <Link class="nav-link active" aria-current="page" to="/">Home</Link>
                             </li>

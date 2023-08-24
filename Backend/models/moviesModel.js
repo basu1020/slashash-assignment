@@ -11,7 +11,7 @@ const Movie = sequelize.define('Movie', {
   
   // Year the movie was released
   year: {
-    type: DataTypes.INTEGER, // Use an integer data type
+    type: DataTypes.STRING(50), // Use an integer data type
     allowNull: false, // Year cannot be null
   },
   
